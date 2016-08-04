@@ -1,8 +1,20 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"time"
+)
+
+func timeTrack(start time.Time, name string) {
+	elapsed := time.Since(start)
+	log.Printf("%s took %s", name, elapsed)
+}
 
 func main() {
+	defer timeTrack(time.Now(), "slice")
+
+	//start := time.Now()
 
 	fmt.Println("It's slice time!!1!")
 	fmt.Println()
@@ -21,12 +33,21 @@ func main() {
 	fmt.Println()
 
 	strs := []string{"cheese", "pepperoni", "bacon", "peppers", "sausage"}
-
+	fmt.Println("slice of 5:")
 	for _, str := range strs {
 		fmt.Println(str)
 	}
-	// Declare a slice of five strings and initialize the slice with string literal
-	// values. Display all the elements. Take a slice of index one and two
-	// and display the index position and value of each element in the new slice.
+
+	fmt.Println()
+	fmt.Println("sub-slice of 2:")
+
+	firsttwo := strs[:2]
+
+	for _, ft := range firsttwo {
+		fmt.Println(ft)
+	}
+
+	//elapsed := time.Since(start)
+	//log.Printf("slice took %s", elapsed)
 
 }
